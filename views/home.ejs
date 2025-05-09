@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/home.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <!-- header part -->
+        <div class="header">
+            <h1>My Blog</h1>
+            <form action="/newPost" method="GET">
+                <button type="submit">New Post</button>
+            </form>
+        </div>
+
+         <!-- blog posts part -->
+        <div class="blog_posts_box">
+            <% if (locals.posts){ %>
+                 <% posts.forEach((post) => { %>
+                    <div class="one_post">
+                        <h3><%= post.title %></h3>
+                        <p class="date"><%= post.time %></p>
+                        <p class="description"><%= post.description %></p>
+                        <p class="author">author: <%= post.author %></p>
+        
+                        <form action="/posts/edit" method="GET">
+                            <input type="hidden" name="postId" value="<%= post.id %>" >
+                            <button type="submit">edit</button>
+                        </form>
+                        <form id="delete" action="/api/posts/delete" method="POST">
+                            <input type="hidden" name="postId" value="<%= post.id %>" >
+                            <button type="submit">delete</button>
+                        </form>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h1>You are not qualified to view my website, go back! try to improve yourself</h1>
+            <% } %>
+                
+        
+        </div>
+        <!-- control box -->
+        <div class="control_box">
+            <form action="/register_logIn" method="GET">
+                <button class="register_logIn_button" type="submit">register/ LogIn</button>
+            </form>
+        </div>
+        <button class="theme_changing_button">day/night</button>
+        <button class="font_size_increase_button">A+</button>
+        <button class="font_size_decrease_button">A-</button>
+    </div>
+</body>
+</html>

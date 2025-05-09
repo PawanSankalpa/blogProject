@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/logIn.css">
+    <title>Log In</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Log In</h1>
+        <div class="logIn_input">
+            <form action="/register_logIn/logIn/api/logInUser" method="POST">
+                <div class="username_input">
+                    <label for="username">username: </label>
+                    <input type="text" name="username" required>
+                </div>
+    
+                <div class="password_input">
+                    <label for="password">password: </label>
+                    <input type="text" name="password" required>
+                </div>    
+    
+                <button type="submit">Log In</button>
+            </form>
+    
+            <!-- redirect link to the log In page -->
+            <p>New here? <a href="/register_logIn/register">register here</a></p>
+        </div>
+
+    </div>
+</body>
+</html>

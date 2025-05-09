@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.header button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: #7ed6df;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header button:hover {
+    background-color: #70c1cf;
+}
+
+/* Blog posts */
+.blog_posts_box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.one_post {
+    padding: 1.5rem;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.one_post h3 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 0.5rem;
+}
+
+.one_post p {
+    margin-bottom: 0.4rem;
+}
+
+.one_post .date {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.one_post .author {
+    font-style: italic;
+    color: #555;
+}
+
+/* Buttons */
+.one_post form {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.one_post button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: #82ccdd;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.one_post button:hover {
+    background-color: #60b7c2;
+}
+
+/* Control box */
+.control_box {
+    margin-top: 2rem;
+}
+
+.register_logIn_button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: #a29bfe;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.register_logIn_button:hover {
+    background-color: #8e85f0;
+}
+
+/* Utility buttons */
+.theme_changing_button,
+.font_size_increase_button,
+.font_size_decrease_button {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #dff9fb;
+    border: 1px solid #c7ecee;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.theme_changing_button:hover,
+.font_size_increase_button:hover,
+.font_size_decrease_button:hover {
+    background-color: #c7ecee;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.2rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .one_post {
+        padding: 1rem;
+    }
+
+    .one_post h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header button,
+    .register_logIn_button,
+    .theme_changing_button,
+    .font_size_increase_button,
+    .font_size_decrease_button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .one_post {
+        font-size: 0.95rem;
+    }
+}
+
+#delete button {
+    background-color: #e74d3cc9;
+}
+
+#delete button:hover{
+    background-color: #ea3c28;
+}

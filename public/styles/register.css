@@ -1,0 +1,218 @@
+/* Base Styles */
+:root {
+    --primary-color: #60b7c2; /* Soft purple - promotes creativity and calm */
+    --secondary-color: #4fd1c5; /* Soft teal - refreshing and inviting */
+    --background-color: #f8f9fa; /* Very light gray - easy on the eyes */
+    --text-color: #2d3748; /* Dark gray - high readability */
+    --light-text: #718096; /* Medium gray - for less important text */
+    --success-color: #68d391; /* Soft green - for positive feedback */
+    --error-color: #82ccddb0; /* Soft red - for errors */
+    --transition-speed: 0.3s;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-align: center;
+    animation: fadeInDown 0.5s ease-out;
+  }
+  
+  /* Form Container */
+  .reigster_input {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  }
+  
+  .reigster_input:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Form Elements */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 1px;
+    padding: 0;
+    font-weight: 1000;
+    color: var(--text-color);
+    
+    transition: color var(--transition-speed) ease;
+  }
+  
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all var(--transition-speed) ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+  }
+  
+  button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    margin-top: 1rem;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #82ccdd;
+    transform: translateY(-2px);
+  }
+  
+  button[type="submit"]:active {
+    transform: translateY(0);
+  }
+  
+  /* Link Styles */
+  p {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--light-text);
+  }
+  
+  a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-speed) ease;
+  }
+  
+  a:hover {
+    color: var(--primary-color);
+  }
+  
+  a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-speed) ease;
+  }
+  
+  a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Animations */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .reigster_input {
+      padding: 1.5rem;
+    }
+    
+    form {
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    .reigster_input {
+      padding: 1.25rem;
+    }
+    
+    input, button[type="submit"] {
+      padding: 0.75rem;
+    }
+  }
+  
+  /* Micro-interactions for better UX */
+  input:valid {
+    border-color: #e2e8f0; /* Reset to default when valid */
+  }
+  
+  input:invalid:not(:placeholder-shown) {
+    border-color: var(--error-color);
+  }
+  
+  /* Focus styles for accessibility */
+  button:focus, input:focus, a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
