@@ -1,4 +1,4 @@
-# Blog Website - Express.js with EJS
+# Blog Website - Express.js with EJS 
 
 This is the **frontend** part of a blog website built using Express.js and EJS templating. It interacts with a separate backend server through API requests to display and manage blog posts.
 
@@ -24,6 +24,18 @@ This is the **frontend** part of a blog website built using Express.js and EJS t
 
 ---
 
+## API Knowledge Demonstrated in This Project
+
+- Implemented a RESTful API using Express.js for the backend, with Axios on the frontend to make asynchronous HTTP requests.
+
+- One of the main challenges in this project was designing and creating the API endpoints. Handling different HTTP methods such as GET, POST, PATCH, and DELETE required careful thought to ensure data was processed correctly, errors were managed properly, and appropriate status codes were returned.
+
+- Developed full CRUD functionality for blog posts using REST principles.
+
+- Ensured frontend-backend communication works smoothly by dynamically rendering API data with EJS templates.
+
+- Implemented error handling, request validation, and used meaningful status codes to indicate the outcome of operations.
+
 
 
 ## 📦 Installation
@@ -47,7 +59,7 @@ node dataHandling.js
 ```
 4. **Visit in browser:**
 ```
-*http://localhost:3000*
+http://localhost:3000
 ```
 
 ## 🔗 Backend Server
