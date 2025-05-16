@@ -1,4 +1,4 @@
-# Blog Website (Front-End) - Express.js with EJS
+# Blog Website - Express.js with EJS
 
 This is the **frontend** part of a blog website built using Express.js and EJS templating. It interacts with a separate backend server through API requests to display and manage blog posts.
 
