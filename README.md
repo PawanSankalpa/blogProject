@@ -65,7 +65,7 @@ http://localhost:3000
 ## 🔗 Backend Server
 This frontend expects a backend API to be running at:
 ```
-*http://localhost:4000*
+http://localhost:4000
 ```
 
 **Make sure to start the backend server as well. The API endpoints it uses include:**
