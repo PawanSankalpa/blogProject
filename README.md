@@ -40,7 +40,9 @@ npm install
 3. **Start the server:**
 ```bash
 node index.js 
-# Open a new terminal, then cd to the project folder and run:
+```
+*Open a new terminal, then cd to the project folder and run:*
+``` bash
 node dataHandling.js
 ```
 4. **Visit in browser:**
