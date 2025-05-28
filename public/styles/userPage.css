@@ -1,0 +1,326 @@
+/* userPage.css */
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles for the body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Reverted to Segoe UI */
+    background-color: #f9fafb; /* Previous soft light background color */
+    color: #333; /* Previous darker text for contrast */
+    line-height: 1.6; /* Reverted line-height for previous feel */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Ensure smooth theme transitions if JS is added later */
+}
+
+/* Base font size */
+html {
+    font-size: 16px;
+}
+
+/* Container for page content */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem; /* Default padding */
+    padding-top: 3.5rem; /* Adjusted top padding to give more space below the absolute back button */
+    padding-bottom: 4rem;
+    max-width: 900px; /* Reverted max-width */
+    margin: 1rem auto; /* Centered with top/bottom margin */
+    background: #ffffff; /* Previous white background */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Previous soft shadow */
+    border-radius: 12px; /* Previous border-radius */
+    position: relative; /* Added for absolute positioning of children */
+}
+
+/* Responsive padding for container */
+@media (min-width: 640px) {
+    .container {
+        padding: 2rem;
+        padding-top: 4rem; /* Adjusted top padding for larger screens */
+        padding-bottom: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 2.5rem;
+        padding-top: 4.5rem; /* Adjusted top padding for even larger screens */
+        padding-bottom: 6rem;
+    }
+}
+
+/* Header styling */
+.header {
+    width: 100%;
+    background-color: #ffffff; /* Reverted to white background */
+    border-radius: 0.75rem; /* Reverted border-radius */
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centered items for better mobile appearance */
+    gap: 1rem;
+    box-shadow: none; /* Removed header-specific shadow */
+}
+
+@media (min-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: center; /* Center header content */
+    }
+}
+
+.header h1 {
+    font-size: 2.5rem; /* Reverted font size */
+    font-weight: 800;
+    color: #2c3e50; /* Previous header color */
+    letter-spacing: normal; /* Reverted letter-spacing */
+}
+
+@media (min-width: 640px) {
+    .header h1 {
+        font-size: 2.5rem; /* Keep consistent */
+    }
+}
+
+/* Button general styles */
+button, .header button, .blog_posts_box button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem; /* Reverted font size */
+    font-weight: normal; /* Reverted font-weight */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Enhanced transitions */
+    box-shadow: none; /* Reverted to no general button shadow */
+}
+
+button:hover, .header button:hover, .blog_posts_box button:hover {
+    transform: translateY(-2px); /* Subtle lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer hover shadow */
+}
+
+button:focus {
+    outline: none; /* Reverted to no outline */
+    box-shadow: 0 0 0 2px rgba(126, 214, 223, 0.5); /* Focus ring with previous blue color */
+}
+
+/* Back button - now positioned absolutely within the container */
+.backButton {
+    position: absolute; /* Position it relative to the .container */
+    top: 1.5rem; /* Matches default container padding */
+    left: 1.5rem; /* Matches default container padding */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    background-color: #7ed6df; /* Previous primary button color */
+    color: #fff;
+    font-weight: bold; /* Keep bold for prominence */
+    margin-bottom: 0; /* Remove margin-bottom as it's positioned */
+}
+
+.backButton:hover {
+    background-color: #70c1cf; /* Previous hover color */
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* Responsive adjustments for back button position */
+@media (min-width: 640px) {
+    .backButton {
+        top: 2rem; /* Matches container padding */
+        left: 2rem; /* Matches container padding */
+    }
+}
+
+@media (min-width: 1024px) {
+    .backButton {
+        top: 2.5rem; /* Matches container padding */
+        left: 2.5rem; /* Matches container padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .backButton {
+        top: 1.2rem; /* Matches container padding */
+        left: 1.2rem; /* Matches container padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .backButton {
+        top: 1.2rem; /* Keep consistent with 768px breakpoint */
+        left: 1.2rem; /* Keep consistent with 768px breakpoint */
+        /* Optionally, adjust button size for very small screens if needed */
+        padding: 0.5rem 1rem; /* Slightly smaller padding for very small screens */
+        font-size: 0.9rem; /* Slightly smaller font size */
+    }
+}
+
+
+/* Blog posts container */
+.blog_posts_box {
+    width: 100%;
+    display: flex; /* Reverted to flex column for blog feel */
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem; /* Reverted margin-bottom */
+}
+
+/* Individual blog post card */
+.one_post {
+    background-color: #f0f4f8; /* Previous background color */
+    padding: 1.5rem; /* Reverted padding */
+    border-radius: 10px; /* Previous border-radius */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Previous soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.one_post:hover {
+    transform: translateY(-3px); /* Subtle lift on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* Slightly more pronounced shadow on hover */
+}
+
+.one_post h3 {
+    font-size: 1.5rem; /* Reverted font size */
+    font-weight: normal; /* Reverted font-weight */
+    color: #34495e; /* Previous header color */
+    margin-bottom: 0.5rem;
+}
+
+.one_post p {
+    margin-bottom: 0.4rem;
+}
+
+.one_post .date {
+    font-size: 0.9rem; /* Reverted font size */
+    color: #888; /* Previous color */
+    margin-bottom: 0.75rem;
+    font-style: normal; /* Reverted font-style */
+}
+
+.one_post .description {
+    font-size: 1rem; /* Reverted font size */
+    color: #333; /* Previous color */
+    margin-bottom: 1rem;
+    /* Removed line-clamp and overflow properties to show full description */
+    display: block; /* Ensure it's a block element */
+    text-overflow: initial; /* Reset text overflow */
+    overflow: visible; /* Reset overflow */
+    -webkit-line-clamp: unset; /* Reset line clamp */
+    -webkit-box-orient: unset; /* Reset box orient */
+}
+
+.one_post .author {
+    font-size: 0.9rem; /* Reverted font size */
+    color: #555; /* Previous color */
+    font-style: italic; /* Reverted font-style */
+    text-align: right;
+}
+
+/* Forms within one_post for edit/delete */
+.one_post form {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-top: 1rem; /* Reverted margin-top */
+}
+
+/* Edit button */
+.one_post form button {
+    background-color: #82ccdd; /* Previous edit button color */
+    color: #ffffff;
+    padding: 0.5rem 1rem; /* Reverted padding */
+    font-size: 0.9rem; /* Reverted font size */
+}
+
+.one_post form button:hover {
+    background-color: #60b7c2; /* Previous edit button hover color */
+}
+
+/* Delete button */
+.one_post form#delete button {
+    background-color: #e74d3cc9;
+}
+
+.one_post form#delete button:hover {
+    background-color: #ea3c28;
+}
+
+/* Message for no posts */
+.blog_posts_box h2 {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Reverted shadow */
+    color: #2c3e50; /* Previous color */
+    font-size: 1.8rem; /* Reverted font size */
+    margin-top: 2rem;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.2rem; /* Reverted padding */
+        padding-top: 3rem; /* Adjusted for smaller screens to ensure space for back button */
+        margin: auto; /* Reverted margin */
+    }
+
+    .header {
+        padding: 1.5rem; /* Reverted padding */
+        align-items: center; /* Ensure header content is centered on smaller screens */
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .blog_posts_box {
+        flex-direction: column; /* Ensure column layout */
+    }
+
+    .one_post {
+        padding: 1rem;
+    }
+
+    .one_post h3 {
+        font-size: 1.3rem;
+    }
+
+    .one_post form {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    button, .header button, .backButton {
+        padding: 0.6rem 1.2rem; /* Reverted button padding */
+        font-size: 1rem; /* Reverted button font size */
+        width: auto; /* Allow button to size naturally, not 100% width */
+        margin-top: 0.5rem;
+    }
+
+    /* Keep backButton position consistent */
+    .backButton {
+        top: 1.2rem; /* Adjusted for smaller screens */
+        left: 1.2rem; /* Adjusted for smaller screens */
+    }
+
+    .one_post {
+        font-size: 0.95rem; /* Reverted font size */
+        padding: 1rem; /* Reverted padding */
+    }
+
+    .one_post h3 {
+        font-size: 1.3rem; /* Reverted font size */
+    }
+
+    .one_post .description {
+        font-size: 1rem; /* Reverted font size */
+    }
+}

@@ -62,9 +62,9 @@ jspm_packages/
 # Nuxt.js build / generate output
 .nuxt/
 
-# Gatsby files
+# Gatsby file
 .cache/
-public/
+
 
 # Vuepress build output
 .vuepress/dist/
