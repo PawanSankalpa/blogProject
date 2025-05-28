@@ -166,11 +166,11 @@ html {
 }
 
 .header .register_logIn_button {
-    background-color: #a29bfe; /* Updated color */
+    background-color: #C3B1E1; /* Light purple for Register/Login */
     color: white; /* text-white */
 }
 .header .register_logIn_button:hover {
-    background-color: #8e85f0; /* Updated hover color */
+    background-color: #B29BCC; /* Slightly darker light purple on hover */
     transform: none; /* Removed slight lift on hover */
 }
 .header .register_logIn_button:focus {
@@ -189,7 +189,7 @@ html {
     box-shadow: none; /* Removed focus ring */
 }
 
-/* --- New Styles for Logout Button --- */
+/* Styles for Logout Button */
 .header .secretsLogout {
     background-color: #e74d3cc9; /* A distinct red for logout */
     color: white; /* White text for contrast */
@@ -203,13 +203,11 @@ html {
 .header .secretsLogout:focus {
     box-shadow: none; /* No focus ring */
 }
-/* --- End New Styles --- */
 
 
 /* Blog posts container */
 .blog_posts_box {
     width: 100%;
-    /* max-width: 64rem; -- Removed as container now has max-width */
     display: flex; /* Changed to flex for column layout */
     flex-direction: column; /* Stack posts vertically */
     gap: 1.5rem; /* gap-6 */
@@ -287,11 +285,13 @@ html {
     border: 1px solid #dc2626; /* Red border for emphasis */
 }
 
-.blog_posts_box > h1 { /* Corrected selector based on your EJS for the message */
-    font-size: 1.875rem; /* text-3xl */
-    font-weight: 700; /* font-bold */
-    color: #dc2626; /* text-red-600 */
-}
+/* This was a duplicate, removed. The one above already targets h1 for the message */
+/* .blog_posts_box > h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #dc2626;
+} */
+
 
 /* Control buttons at the bottom */
 .control-buttons {
