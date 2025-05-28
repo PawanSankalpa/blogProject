@@ -11,14 +11,14 @@
         <h1>Your Post</h1>
 
         <!-- Form to submit a new blog post -->
-        <form action="/api/post/editPost" method="POST">
-            <input name="postId" type="hidden" value="<%= post.id %>">
+        <form action="/user_posts/edit" method="POST">
+            <input name="postId" type="hidden" value="<%= post.post_id %>">
             <div class="post_input">
                 <label for="title" >title: </label>
                 <input type="text" name="title" value="<%= post.title %>" required>
 
                 <label for="description">description: </label>
-                <textarea rows="4" name="description" id="description" required><%= post.description %></textarea>
+                <textarea rows="4" name="description" id="description" required><%= post.content %></textarea>
             </div>
                 
             <button class="post_button" type="submit">edit</button>

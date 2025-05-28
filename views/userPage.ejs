@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/home.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <!-- header part -->
+        <div class="header">
+            <h1>My Blog</h1>
+        </div>
+
+        <form action="/back_to_mainPage" method="GET">
+            <button type="submit">Back to the main page</button>
+        </form>
+
+         <!-- blog posts part -->
+        <div class="blog_posts_box">
+            <% if (myPosts && myPosts.length > 0){ %>
+                 <% myPosts.forEach((post) => { %>
+                    <div class="one_post">
+                        <h3><%= post.title %></h3>
+                        <p class="date"><%= post.created_at %></p>
+                        <p class="description"><%= post.content %></p>
+                        <p class="author">author: <%= post.username %></p>
+        
+                        <form action="/user_posts/edit" method="GET">
+                            <input type="hidden" name="postId" value="<%= post.post_id %>" >
+                            <button type="submit">edit</button>
+                        </form>
+                        <form id="delete" action="/user_posts/delete" method="POST">
+                            <input type="hidden" name="postId" value="<%= post.post_id %>" >
+                            <button type="submit">delete</button>
+                        </form>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h2>You have 0 posts!</h2>
+            <% } %>
+                
+        
+        </div>
+        <!-- control box -->
+        <button class="theme_changing_button">day/night</button>
+        <button class="font_size_increase_button">A+</button>
+        <button class="font_size_decrease_button">A-</button>
+    </div>
+</body>
+</html>

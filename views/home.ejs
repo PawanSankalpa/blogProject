@@ -10,7 +10,22 @@
     <div class="container">
         <!-- header part -->
         <div class="header">
-            <h1>My Blog</h1>
+            <h1>Blog</h1>
+
+            <% if (user) { %>
+                <p class="welcomeMsg">Welcome, <%= user.username %>!</p>
+                <form action="/user_posts" method="GET">
+                    <button type="submit">My Posts</button>
+                    <input type="text" name="username" value="<%= user.username %>" hidden>
+                </form>
+            <% } else { %>
+                <div class="control_box">
+                    <form action="/register_login" method="GET">
+                        <button class="register_logIn_button" type="submit">register/ LogIn</button>
+                     </form>
+                 </div>
+            <% } %>
+
             <form action="/newPost" method="GET">
                 <button type="submit">New Post</button>
             </form>
@@ -22,18 +37,9 @@
                  <% posts.forEach((post) => { %>
                     <div class="one_post">
                         <h3><%= post.title %></h3>
-                        <p class="date"><%= post.time %></p>
-                        <p class="description"><%= post.description %></p>
-                        <p class="author">author: <%= post.author %></p>
-        
-                        <form action="/posts/edit" method="GET">
-                            <input type="hidden" name="postId" value="<%= post.id %>" >
-                            <button type="submit">edit</button>
-                        </form>
-                        <form id="delete" action="/api/posts/delete" method="POST">
-                            <input type="hidden" name="postId" value="<%= post.id %>" >
-                            <button type="submit">delete</button>
-                        </form>
+                        <p class="date"><%= post.created_at %></p>
+                        <p class="description"><%= post.content %></p>
+                        <p class="author">author: <%= post.username %></p>       
                     </div>
                 <% }) %>
             <% } else { %>
@@ -43,11 +49,6 @@
         
         </div>
         <!-- control box -->
-        <div class="control_box">
-            <form action="/register_logIn" method="GET">
-                <button class="register_logIn_button" type="submit">register/ LogIn</button>
-            </form>
-        </div>
         <button class="theme_changing_button">day/night</button>
         <button class="font_size_increase_button">A+</button>
         <button class="font_size_decrease_button">A-</button>

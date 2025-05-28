@@ -10,22 +10,22 @@
     <div class="container">
         <h1>Log In</h1>
         <div class="logIn_input">
-            <form action="/register_logIn/logIn/api/logInUser" method="POST">
+            <form action="/login" method="POST">
                 <div class="username_input">
-                    <label for="username">username: </label>
-                    <input type="text" name="username" required>
+                    <label for="email">email: </label>
+                    <input type="text" name="email" required>
                 </div>
     
                 <div class="password_input">
                     <label for="password">password: </label>
-                    <input type="text" name="password" required>
+                    <input type="password" name="password" required autocomplete="off">
                 </div>    
     
                 <button type="submit">Log In</button>
             </form>
     
             <!-- redirect link to the log In page -->
-            <p>New here? <a href="/register_logIn/register">register here</a></p>
+            <p>New here? <a href="/register">register here</a></p>
         </div>
 
     </div>
