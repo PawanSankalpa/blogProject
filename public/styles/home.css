@@ -1,153 +1,317 @@
+/* home.css */
+
+/* Global reset for consistent styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Base styles for the body */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9fafb;
-    color: #333;
-    line-height: 1.6;
-    padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Updated font family */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6; /* Added line height for readability */
 }
 
-/* Container */
+/* Define light theme colors */
+body.light-theme {
+    background-color: #f9fafb; /* Soft light background color */
+    color: #333; /* Darker text for contrast */
+}
+
+/* Define dark theme colors (keeping existing dark theme for contrast) */
+body.dark-theme {
+    background: linear-gradient(to bottom right, #1a202c, #2d3748); /* Dark gradient */
+    color: #e2e8f0; /* Light text */
+}
+
+/* Adjust font size dynamically via JS, default base size */
+html {
+    font-size: 16px; /* Base font size */
+}
+
+/* Utility classes for dynamic font sizing (managed by JS) */
+.text-base-size { font-size: 1rem; }
+.text-lg-size { font-size: 1.125rem; }
+.text-xl-size { font-size: 1.25rem; }
+.text-2xl-size { font-size: 1.5rem; }
+.text-3xl-size { font-size: 1.875rem; }
+.text-4xl-size { font-size: 2.25rem; }
+
+
+/* Container for the entire page content */
 .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 2rem;
-    background: #ffffff;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem; /* Default padding */
+    padding-top: 2rem; /* Add some padding to the top for blog feel */
+    padding-bottom: 4rem; /* Add more padding to the bottom */
+    max-width: 900px; /* Max width for the container */
+    margin: auto; /* Center the container */
+    background: #ffffff; /* White background for the container */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border-radius: 12px; /* Rounded corners */
 }
 
-/* Header */
+/* Responsive padding for container */
+@media (min-width: 640px) { /* sm breakpoint */
+    .container {
+        padding: 1.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .container {
+        padding: 2rem;
+        padding-top: 3rem;
+        padding-bottom: 6rem;
+    }
+}
+
+/* Header styling */
 .header {
+    width: 100%;
+    /* max-width: 64rem; -- Removed as container now has max-width */
+    background-color: #ffffff; /* Solid white background */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: none; /* Removed header specific shadow, container handles it */
+    padding: 1.5rem; /* p-6 */
+    margin-bottom: 2rem; /* mb-8 */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
+    flex-direction: column; /* flex-col */
+    align-items: center; /* items-center */
+    justify-content: space-between; /* justify-between */
+    gap: 1rem; /* gap-4 */
+    border-bottom: none; /* Removed specific header border */
+}
+
+/* Responsive header layout */
+@media (min-width: 768px) { /* md breakpoint */
+    .header {
+        flex-direction: row; /* md:flex-row */
+    }
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
+    font-size: 2.5rem; /* Updated font size */
+    font-weight: 800; /* font-extrabold */
+    color: #2c3e50; /* Updated color */
+    margin-bottom: 0; /* Remove default margin */
+    letter-spacing: normal; /* Removed tight letter spacing */
 }
 
-.header button {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-    background-color: #7ed6df;
-    color: #fff;
+/* Responsive header h1 font size */
+@media (min-width: 640px) { /* sm breakpoint */
+    .header h1 {
+        font-size: 2.5rem; /* Keep consistent with new design */
+    }
+}
+
+.header .welcomeMsg {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    color: #333; /* Updated text color */
+    margin: 0; /* Remove default margin */
+}
+
+/* Responsive welcomeMsg font size */
+@media (min-width: 640px) { /* sm breakpoint */
+    .header .welcomeMsg {
+        font-size: 1.25rem; /* sm:text-xl */
+    }
+}
+
+.header .flex { /* For the div wrapping welcomeMsg and My Posts button */
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+
+.header .control_box {
+    /* No specific styles needed for this container beyond its children */
+}
+
+/* Button general styles */
+.header button,
+.control-buttons button {
+    padding: 0.6rem 1.2rem; /* Adjusted padding */
+    font-weight: normal; /* Removed font-semibold */
+    font-size: 1rem; /* Adjusted font size */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: none; /* Removed button specific shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* transition duration-300 ease-in-out */
+    outline: none; /* focus:outline-none */
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.header button:hover {
-    background-color: #70c1cf;
+/* Specific button colors and hover effects */
+.header button[type="submit"] {
+    background-color: #7ed6df; /* Updated color */
+    color: #fff; /* text-white */
+}
+.header button[type="submit"]:hover {
+    background-color: #70c1cf; /* Updated hover color */
+    transform: none; /* Removed slight lift on hover */
+}
+.header button[type="submit"]:focus {
+    box-shadow: none; /* Removed focus ring */
 }
 
-/* Blog posts */
+.header .register_logIn_button {
+    background-color: #a29bfe; /* Updated color */
+    color: white; /* text-white */
+}
+.header .register_logIn_button:hover {
+    background-color: #8e85f0; /* Updated hover color */
+    transform: none; /* Removed slight lift on hover */
+}
+.header .register_logIn_button:focus {
+    box-shadow: none; /* Removed focus ring */
+}
+
+.header form[action="/newPost"] button {
+    background-color: #7ed6df; /* Using header button color for consistency */
+    color: #fff; /* text-white */
+}
+.header form[action="/newPost"] button:hover {
+    background-color: #70c1cf; /* Updated hover color */
+    transform: none; /* Removed slight lift on hover */
+}
+.header form[action="/newPost"] button:focus {
+    box-shadow: none; /* Removed focus ring */
+}
+
+/* Blog posts container */
 .blog_posts_box {
+    width: 100%;
+    /* max-width: 64rem; -- Removed as container now has max-width */
+    display: flex; /* Changed to flex for column layout */
+    flex-direction: column; /* Stack posts vertically */
+    gap: 1.5rem; /* gap-6 */
+    margin-bottom: 2rem; /* Added margin-bottom */
+}
+
+/* Responsive grid for blog posts (overridden by flex-direction: column for a more blog-like feel) */
+@media (min-width: 768px) { /* md breakpoint */
+    .blog_posts_box {
+        /* grid-template-columns: repeat(2, minmax(0, 1fr)); */ /* Removed grid for column layout */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .blog_posts_box {
+        /* grid-template-columns: repeat(3, minmax(0, 1fr)); */ /* Removed grid for column layout */
+    }
+}
+
+/* Individual blog post card */
+.one_post {
+    background-color: #f0f4f8; /* Updated background color */
+    padding: 1.5rem; /* p-6 */
+    border-radius: 10px; /* Updated border-radius */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Updated shadow */
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    justify-content: space-between;
+    border: none; /* Removed subtle border */
 }
 
-.one_post {
-    padding: 1.5rem;
-    background-color: #f0f4f8;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.one_post:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* Slightly more pronounced shadow on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
 }
 
 .one_post h3 {
-    font-size: 1.5rem;
-    color: #34495e;
-    margin-bottom: 0.5rem;
-}
-
-.one_post p {
-    margin-bottom: 0.4rem;
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: normal; /* Removed font-bold */
+    color: #34495e; /* Updated color */
+    margin-bottom: 0.5rem; /* mb-2 */
 }
 
 .one_post .date {
-    font-size: 0.9rem;
-    color: #888;
+    font-size: 0.9rem; /* Updated font size */
+    color: #888; /* Updated color */
+    margin-bottom: 0.75rem; /* mb-3 */
+    font-style: normal; /* Removed italicize date */
+}
+
+.one_post .description {
+    color: #333; /* Updated text color */
+    line-height: 1.6; /* leading-relaxed */
+    margin-bottom: 1rem; /* mb-4 */
 }
 
 .one_post .author {
-    font-style: italic;
-    color: #555;
+    text-align: right; /* text-right */
+    font-size: 0.9rem; /* Updated font size */
+    font-weight: normal; /* Removed font-medium */
+    font-style: italic; /* Italicize author */
+    color: #555; /* Updated color */
+    padding-top: 0; /* Removed padding */
+    border-top: none; /* Removed dashed line above author */
 }
 
-/* Buttons */
-.one_post form {
-    display: inline-block;
-    margin-right: 0.5rem;
+/* Message for unqualified users */
+.blog_posts_box > div.col-span-full {
+    grid-column: span 3 / span 3; /* Kept for potential grid layout in future */
+    text-align: center; /* text-center */
+    padding: 2rem; /* p-8 */
+    background-color: #ffffff; /* Updated background color */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border: 1px solid #dc2626; /* Red border for emphasis */
 }
 
-.one_post button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    background-color: #82ccdd;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+.blog_posts_box > div.col-span-full h1 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: #dc2626; /* text-red-600 */
 }
 
-.one_post button:hover {
-    background-color: #60b7c2;
+/* Control buttons at the bottom */
+.control-buttons {
+    margin-top: 2rem; /* mt-8 */
+    display: flex;
+    flex-wrap: wrap; /* flex-wrap */
+    justify-content: center; /* justify-center */
+    gap: 1rem; /* gap-4 */
 }
 
-/* Control box */
-.control_box {
-    margin-top: 2rem;
+.control-buttons button {
+    background-color: #dff9fb; /* Updated background color */
+    color: #1f2937; /* text-gray-800 */
+    border: 1px solid #c7ecee; /* Added border */
+    border-radius: 6px; /* Updated border-radius */
+    padding: 0.5rem 1rem; /* Adjusted padding */
+    font-size: 0.9rem; /* Adjusted font size */
 }
 
-.register_logIn_button {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-    background-color: #a29bfe;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+.control-buttons button:hover {
+    background-color: #c7ecee; /* Updated hover color */
+    transform: none; /* Removed slight lift on hover */
 }
 
-.register_logIn_button:hover {
-    background-color: #8e85f0;
+.control-buttons button:focus {
+    box-shadow: none; /* Removed focus ring */
 }
 
-/* Utility buttons */
-.theme_changing_button,
-.font_size_increase_button,
-.font_size_decrease_button {
-    margin-top: 1rem;
-    margin-right: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: #dff9fb;
-    border: 1px solid #c7ecee;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+/* Specific delete button style (if used in HTML) */
+#delete button {
+    background-color: #e74d3cc9;
 }
 
-.theme_changing_button:hover,
-.font_size_increase_button:hover,
-.font_size_decrease_button:hover {
-    background-color: #c7ecee;
+#delete button:hover{
+    background-color: #ea3c28;
 }
 
-/* Responsive design */
+/* Responsive design adjustments based on provided CSS */
 @media (max-width: 768px) {
     .container {
         padding: 1.2rem;
@@ -185,12 +349,4 @@ body {
     .one_post {
         font-size: 0.95rem;
     }
-}
-
-#delete button {
-    background-color: #e74d3cc9;
-}
-
-#delete button:hover{
-    background-color: #ea3c28;
 }
