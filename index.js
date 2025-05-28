@@ -23,10 +23,14 @@ let posts = [];
 
 
 
-const db = new pg.Client({
+const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  ssl: { 
+    rejectUnauthorized: false 
+  },
 });
+
+//todo: before uploading to the github , make sure to change the database connected method.
 
 db.connect()
   .then(async() => {
@@ -202,96 +206,6 @@ app.post("/user_posts/edit", async(req, res) => {
 
 
 
-
-// // Edit Page
-// // Renders the edit form
-// app.get("/posts/edit", async (req, res) => {
-//   try {
-//     const postId = req.query.postId;
-//     const response = await axios.get(`${API_URL}/posts/singlePost/${postId}`);
-//     const post = response.data.data;
-//     res.render("edit.ejs", { post });
-//   } catch (error) {
-//     res.status(500).json({
-//       message: "Something went wrong with the server",
-//     });
-//   }
-// });
-
-// /* form submiting routes */
-// //newForm page(new Post)
-// app.post("/api/newPost", async (req, res) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/posts/add_newPost`, req.body);
-//     const data = response.data;
-//     console.log(data.message);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.log("Failed! to Post the new post.", error.message);
-//     res.sendStatus(500);
-//   }
-// });
-
-// // register a user
-// app.post("/register_logIn/register/api/newUser", async (req, res) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/users/register`, req.body);
-//     const data = response.data;
-//     console.log(data.message);
-//     console.log(data.data);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.log("Failed! to register the user.", error.message);
-//     res.sendStatus(500);
-//   }
-// });
-
-// //log in a user
-// app.post("/register_logIn/logIn/api/logInUser", async (req, res) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/users/logIn`, req.body);
-//     const { message, data } = response.data;
-//     console.log("Login successfull!", message);
-//     console.log("User data: ", data);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.log("Failed! to log in the user.", error.message);
-//     res.sendStatus(500);
-//   }
-// });
-
-// //edit Post
-// app.post("/api/post/editPost", async (req, res) => {
-//   try {
-//     const postId = req.body.postId;
-//     const response = await axios.patch(
-//       `${API_URL}/posts/edit/${postId}`,
-//       req.body
-//     );
-//     const { message, data } = response.data;
-//     console.log(message, data);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.log("Failed! to edit the post.", error.message);
-//     res.sendStatus(500);
-//   }
-// });
-
-// /*-------------delete handling -------------- */
-// app.post("/api/posts/delete", async (req, res) => {
-//   try {
-//     const postId = req.body.postId;
-//     const response = await axios.delete(`${API_URL}/posts/delete/${postId}`);
-//     const data = response.data;
-
-//     console.log(`Successfully deleted. ${data}`);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.log("Failed! to delete the post.", error.message);
-//     res.sendStatus(500);
-//   }
-// });
-
 /**  ----------------Updated version------------------------------- */
 
 //register
@@ -354,6 +268,13 @@ app.post(
     failureRedirect: "/login",
   })
 );
+
+app.get("/logout", (req, res, next) => {
+  req.logout(err => {
+    if (err) return next(err);
+    res.redirect("/");
+  })
+});
 
 /** ----------- Blog post section ------------ */
 

@@ -18,6 +18,7 @@
                     <button type="submit">My Posts</button>
                     <input type="text" name="username" value="<%= user.username %>" hidden>
                 </form>
+                <a class="secretsLogout" href="/logout" role="button">Log Out</a>
             <% } else { %>
                 <div class="control_box">
                     <form action="/register_login" method="GET">

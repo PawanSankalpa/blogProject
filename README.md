@@ -93,6 +93,7 @@ http://localhost:4000
 ![register page](screenshot5.png)
 ---
 ![edit page](screenshot6.png)
-
+---
+![edit or delete your post](screenshot7.png)
 
 
